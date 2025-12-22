@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>清明学園高等学校 | Seimei Gakuen High School</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a3a5c;
+            --primary-light: #2d5a8a;
+            --accent: #c9a962;
+            --accent-light: #e8d4a8;
+            --white: #ffffff;
+            --off-white: #f8f6f3;
+            --gray-light: #e8e6e3;
+            --gray: #6b6b6b;
+            --text: #2c2c2c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Zen Kaku Gothic New', sans-serif;
+            color: var(--text);
+            line-height: 1.8;
+            background: var(--off-white);
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--gray-light);
+            transition: all 0.3s ease;
+        }
+
+        .header-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--primary);
+        }
+
+        .logo-mark {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-family: 'Noto Serif JP', serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .logo-text {
+            font-family: 'Noto Serif JP', serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            letter-spacing: 0.1em;
+        }
+
+        .logo-sub {
+            font-size: 0.65rem;
+            color: var(--gray);
+            letter-spacing: 0.15em;
+            margin-top: 2px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .header-cta {
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+        }
+
+        .header-cta:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            min-height: 700px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--primary) 0%, #0d1f30 100%);
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            opacity: 0.15;
+            background-image: 
+                radial-gradient(circle at 20% 80%, var(--accent) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, var(--primary-light) 0%, transparent 50%);
+        }
+
+        .hero-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30z' fill='%23ffffff' fill-opacity='0.4'/%3E%3C/svg%3E");
+            background-size: 60px 60px;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 4rem;
+            position: relative;
+            z-index: 10;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(201, 169, 98, 0.2);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 0.5rem 1.5rem;
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        .hero h1 {
+            font-family: 'Noto Serif JP', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            color: var(--white);
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease 0.4s forwards;
+            opacity: 0;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease 0.6s forwards;
+            opacity: 0;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            animation: fadeInUp 1s ease 0.8s forwards;
+            opacity: 0;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--primary);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-light);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(201, 169, 98, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--white);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+            animation: bounce 2s infinite;
+        }
+
+        .hero-scroll:hover {
+            opacity: 1;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--white), transparent);
+        }
+
+        /* News Ticker */
+        .news-ticker {
+            background: var(--primary);
+            color: var(--white);
+            padding: 1rem 0;
+            overflow: hidden;
+        }
+
+        .ticker-content {
+            display: flex;
+            animation: ticker 30s linear infinite;
+        }
+
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .ticker-item {
+            white-space: nowrap;
+            padding: 0 3rem;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .ticker-item::before {
+            content: '●';
+            color: var(--accent);
+            font-size: 0.5rem;
+        }
+
+        /* Section Common */
+        section {
+            padding: 8rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            color: var(--accent);
+            letter-spacing: 0.3em;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .section-title {
+            font-family: 'Noto Serif JP', serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            margin: 1.5rem auto 0;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--white);
+        }
+
+        .about-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image-main {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-family: 'Noto Serif JP', serif;
+            font-size: 3rem;
+        }
+
+        .about-image-accent {
+            position: absolute;
+            bottom: -2rem;
+            right: -2rem;
+            width: 200px;
+            height: 200px;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: var(--primary);
+        }
+
+        .about-image-accent span {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        .about-image-accent small {
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+        }
+
+        .about-content h3 {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .about-content p {
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .about-feature-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--off-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .about-feature-text {
+            font-size: 0.9rem;
+        }
+
+        .about-feature-text strong {
+            display: block;
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .about-feature-text span {
+            color: var(--gray);
+            font-size: 0.85rem;
+        }
+
+        /* Features Section */
+        .features {
+            background: var(--off-white);
+        }
+
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 2rem;
+            border-radius: 50%;
+        }
+
+        .feature-card h3 {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* Numbers Section */
+        .numbers {
+            background: linear-gradient(135deg, var(--primary) 0%, #0d1f30 100%);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .numbers::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='40' stroke='%23c9a962' stroke-width='0.5' fill='none' opacity='0.1'/%3E%3C/svg%3E");
+            background-size: 100px 100px;
+        }
+
+        .numbers-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .number-item {
+            text-align: center;
+        }
+
+        .number-value {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .number-value span {
+            font-size: 1.5rem;
+        }
+
+        .number-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            letter-spacing: 0.1em;
+        }
+
+        /* News Section */
+        .news {
+            background: var(--white);
+        }
+
+        .news-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .news-card {
+            background: var(--off-white);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+        }
+
+        .news-content {
+            padding: 1.5rem;
+        }
+
+        .news-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .news-date {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        .news-category {
+            font-size: 0.75rem;
+            background: var(--accent);
+            color: var(--primary);
+            padding: 0.2rem 0.8rem;
+            font-weight: 500;
+        }
+
+        .news-card h3 {
+            font-size: 1rem;
+            color: var(--primary);
+            line-height: 1.6;
+        }
+
+        .news-more {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            text-align: center;
+        }
+
+        .news-more a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+        }
+
+        .news-more a:hover {
+            color: var(--accent);
+            gap: 1rem;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: var(--accent);
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-family: 'Noto Serif JP', serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta p {
+            color: var(--primary);
+            opacity: 0.8;
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .cta .btn-primary:hover {
+            background: var(--primary-light);
+        }
+
+        .cta .btn-secondary {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .cta .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* Footer */
+        footer {
+            background: #0d1f30;
+            color: var(--white);
+            padding: 5rem 2rem 2rem;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-brand .logo {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-brand .logo-mark {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            line-height: 1.8;
+        }
+
+        .footer-links h4 {
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            display: block;
+            padding: 0.4rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            padding-left: 0.5rem;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            opacity: 0.6;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--primary);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background: var(--primary);
+            margin: 6px 0;
+            transition: all 0.3s ease;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .about-image {
+                order: -1;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .numbers-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-inner {
+                padding: 1rem;
+            }
+
+            nav, .header-cta {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-content {
+                padding: 0 1.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .features-grid,
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image-accent {
+                position: relative;
+                bottom: 0;
+                right: 0;
+                width: 100%;
+                height: auto;
+                padding: 2rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-inner">
+            <a href="#" class="logo">
+                <div class="logo-mark">清</div>
+                <div>
+                    <div class="logo-text">清明学園高等学校</div>
+                    <div class="logo-sub">SEIMEI GAKUEN HIGH SCHOOL</div>
+                </div>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#about">学校紹介</a></li>
+                    <li><a href="#features">教育の特色</a></li>
+                    <li><a href="#life">学校生活</a></li>
+                    <li><a href="#admission">入試情報</a></li>
+                    <li><a href="#access">アクセス</a></li>
+                </ul>
+            </nav>
+            <a href="#contact" class="header-cta">資料請求</a>
+            <button class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-pattern"></div>
+        <div class="hero-content">
+            <span class="hero-badge">SINCE 1952</span>
+            <h1>未来を拓く<span>知性</span>と<br><span>品格</span>を育む</h1>
+            <p>70年以上の伝統と革新が融合する清明学園で、<br>次世代のリーダーとしての素養を身につけませんか。</p>
+            <div class="hero-buttons">
+                <a href="#admission" class="btn-primary">入試情報を見る</a>
+                <a href="#about" class="btn-secondary">学校を知る</a>
+            </div>
+        </div>
+        <a href="#about" class="hero-scroll">
+            SCROLL
+            <div class="scroll-line"></div>
+        </a>
+    </section>
+
+    <!-- News Ticker -->
+    <div class="news-ticker">
+        <div class="ticker-content">
+            <div class="ticker-item">【重要】2025年度入学試験 出願受付中</div>
+            <div class="ticker-item">第58回文化祭「清明祭」開催報告を掲載しました</div>
+            <div class="ticker-item">野球部 秋季大会ベスト8進出</div>
+            <div class="ticker-item">英語ディベート大会 全国大会出場決定</div>
+            <div class="ticker-item">学校説明会 12月14日(土)開催</div>
+            <div class="ticker-item">【重要】2025年度入学試験 出願受付中</div>
+            <div class="ticker-item">第58回文化祭「清明祭」開催報告を掲載しました</div>
+            <div class="ticker-item">野球部 秋季大会ベスト8進出</div>
+            <div class="ticker-item">英語ディベート大会 全国大会出場決定</div>
+            <div class="ticker-item">学校説明会 12月14日(土)開催</div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="section-header">
+            <span class="section-label">ABOUT US</span>
+            <h2 class="section-title">学校紹介</h2>
+        </div>
+        <div class="about-grid">
+            <div class="about-image">
+                <div class="about-image-main">校舎写真</div>
+                <div class="about-image-accent">
+                    <small>創立</small>
+                    <span>72</span>
+                    <small>年の歴史</small>
+                </div>
+            </div>
+            <div class="about-content">
+                <h3>「清く明るく」の精神を<br>次世代へ継承する</h3>
+                <p>清明学園高等学校は、1952年の創立以来、「清く明るく」の校訓のもと、知性と品格を兼ね備えた人材の育成に努めてまいりました。変化の激しい現代社会においても、普遍的な価値観と革新的な教育を融合させ、生徒一人ひとりの可能性を最大限に引き出します。</p>
+                <div class="about-features">
+                    <div class="about-feature">
+                        <div class="about-feature-icon">📚</div>
+                        <div class="about-feature-text">
+                            <strong>少人数制教育</strong>
+                            <span>1クラス25名以下</span>
+                        </div>
+                    </div>
+                    <div class="about-feature">
+                        <div class="about-feature-icon">🌏</div>
+                        <div class="about-feature-text">
+                            <strong>グローバル教育</strong>
+                            <span>海外提携校15校</span>
+                        </div>
+                    </div>
+                    <div class="about-feature">
+                        <div class="about-feature-icon">🎓</div>
+                        <div class="about-feature-text">
+                            <strong>進学実績</strong>
+                            <span>国公立大学合格率42%</span>
+                        </div>
+                    </div>
+                    <div class="about-feature">
+                        <div class="about-feature-icon">🏫</div>
+                        <div class="about-feature-text">
+                            <strong>充実の施設</strong>
+                            <span>2023年新校舎完成</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="section-header">
+            <span class="section-label">FEATURES</span>
+            <h2 class="section-title">教育の特色</h2>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>探究型学習</h3>
+                <p>自ら問いを立て、調査・分析・発表を行う探究学習を全学年で実施。論理的思考力と表現力を養います。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💻</div>
+                <h3>ICT教育</h3>
+                <p>一人一台のタブレット端末を活用し、AIやプログラミングなど最先端のテクノロジー教育を展開しています。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌐</div>
+                <h3>国際交流プログラム</h3>
+                <p>アメリカ・イギリス・オーストラリアなど世界15カ国の提携校との交換留学制度を用意しています。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📖</div>
+                <h3>キャリア教育</h3>
+                <p>企業訪問、インターンシップ、職業人講話など、将来を見据えたキャリア形成をサポートします。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏃</div>
+                <h3>部活動</h3>
+                <p>文化部・運動部合わせて32の部活動があり、全国大会出場実績も多数。文武両道を実現します。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🤝</div>
+                <h3>個別サポート</h3>
+                <p>担任と進路指導部による個別面談を定期的に実施し、一人ひとりの目標達成を支援します。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Numbers Section -->
+    <section class="numbers">
+        <div class="section-header">
+            <span class="section-label" style="color: var(--accent);">NUMBERS</span>
+            <h2 class="section-title" style="color: var(--white);">数字で見る清明学園</h2>
+        </div>
+        <div class="numbers-grid">
+            <div class="number-item">
+                <div class="number-value">98<span>%</span></div>
+                <div class="number-label">現役進学率</div>
+            </div>
+            <div class="number-item">
+                <div class="number-value">42<span>%</span></div>
+                <div class="number-label">国公立大学合格率</div>
+            </div>
+            <div class="number-item">
+                <div class="number-value">15<span>校</span></div>
+                <div class="number-label">海外提携校</div>
+            </div>
+            <div class="number-item">
+                <div class="number-value">32<span>部</span></div>
+                <div class="number-label">部活動数</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="news" class="news">
+        <div class="section-header">
+            <span class="section-label">NEWS</span>
+            <h2 class="section-title">お知らせ</h2>
+        </div>
+        <div class="news-grid">
+            <div class="news-card">
+                <div class="news-image">NEWS IMAGE</div>
+                <div class="news-content">
+                    <div class="news-meta">
+                        <span class="news-date">2024.12.20</span>
+                        <span class="news-category">入試</span>
+                    </div>
+                    <h3>2025年度入学試験 出願受付を開始しました</h3>
+                </div>
+            </div>
+            <div class="news-card">
+                <div class="news-image">NEWS IMAGE</div>
+                <div class="news-content">
+                    <div class="news-meta">
+                        <span class="news-date">2024.12.15</span>
+                        <span class="news-category">部活動</span>
+                    </div>
+                    <h3>野球部が秋季大会でベスト8に進出しました</h3>
+                </div>
+            </div>
+            <div class="news-card">
+                <div class="news-image">NEWS IMAGE</div>
+                <div class="news-content">
+                    <div class="news-meta">
+                        <span class="news-date">2024.12.10</span>
+                        <span class="news-category">学校行事</span>
+                    </div>
+                    <h3>第58回文化祭「清明祭」を開催しました</h3>
+                </div>
+            </div>
+        </div>
+        <div class="news-more">
+            <a href="#">すべてのお知らせを見る →</a>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-content">
+            <h2>清明学園の魅力を<br>もっと知ってください</h2>
+            <p>学校説明会・個別相談会を随時開催しています。<br>お気軽にお問い合わせください。</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn-primary">学校説明会に申し込む</a>
+                <a href="#" class="btn-secondary">資料請求する</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <div class="logo-mark">清</div>
+                    <div>
+                        <div class="logo-text">清明学園高等学校</div>
+                        <div class="logo-sub">SEIMEI GAKUEN HIGH SCHOOL</div>
+                    </div>
+                </a>
+                <p>〒100-0001 東京都千代田区清明町1-2-3<br>TEL: 03-1234-5678<br>FAX: 03-1234-5679</p>
+            </div>
+            <div class="footer-links">
+                <h4>学校情報</h4>
+                <ul>
+                    <li><a href="#">学校紹介</a></li>
+                    <li><a href="#">校長挨拶</a></li>
+                    <li><a href="#">教育方針</a></li>
+                    <li><a href="#">施設紹介</a></li>
+                    <li><a href="#">アクセス</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>学校生活</h4>
+                <ul>
+                    <li><a href="#">年間行事</a></li>
+                    <li><a href="#">部活動</a></li>
+                    <li><a href="#">制服紹介</a></li>
+                    <li><a href="#">進路実績</a></li>
+                    <li><a href="#">卒業生の声</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>入試情報</h4>
+                <ul>
+                    <li><a href="#">募集要項</a></li>
+                    <li><a href="#">学校説明会</a></li>
+                    <li><a href="#">出願方法</a></li>
+                    <li><a href="#">学費・奨学金</a></li>
+                    <li><a href="#">よくある質問</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Seimei Gakuen High School. All rights reserved.</p>
+            <div class="footer-social">
+                <a href="#">𝕏</a>
+                <a href="#">f</a>
+                <a href="#">▶</a>
+                <a href="#">📷</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
